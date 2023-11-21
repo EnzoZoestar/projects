@@ -1,0 +1,67 @@
+<?php
+require "tools.php";
+
+if (
+    !isset($_GET["Draw"]) || empty($_GET["Draw"])
+    || !isset($_GET["size"]) || empty($_GET["size"])
+    || !isset($_GET["colors"]) || empty($_GET["colors"])
+
+) {
+    header("Location: index.php");
+    exit();
+} elseif (
+    isset($_GET["Draw"]) && !empty($_GET["Draw"])
+    && $_GET["Draw"] === "normale" && $_GET["Draw"] !== "cross"
+) {
+    $matrix = new Matrix();
+    $UltimateColors = $matrix->generateMatrix($_GET["size"], $avatar);
+} else {
+    $matrix = new CrossMatrix();
+
+    $UltimateColors = $matrix->generateCrossMatrix($_GET["size"], $avatar);
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+
+        }
+
+        tr td {
+            width: 5em;
+            height: 5em;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.php">retour a la selection</a>
+    <table>
+        <thead>
+            <h1>titre</h1>
+        </thead>
+        <tbody>
+            <?php for ($row = 0; $row < $size; $row++) { ?>
+                <tr>
+                    <?php for ($col = 0; $col < $size; $col++) {
+                        $FinalColor = $avatar->getRandom();
+                    ?>
+                        <td style="background-color: <?php echo $UltimateColors[$row][$col] ?>"></td>
+                    <?php } ?>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

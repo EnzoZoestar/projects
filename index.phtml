@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="logo.php" method="$_GET" name="avatar_choice">
+        <input type="number" name="size" value="6" placeholder="taille de la page (ex:6 donnera une page de 6 cubes par 6cubes)(default:6)">
+        <input type="number" name="colors" value="3" placeholder="combien de couleurs differentes comportera l'avatar ? default:4)">
+
+        <label for="normal">normal</label>
+        <input type="radio" id="normal" name="Draw" value="normale" checked>
+
+        <label for="cross">croix</label>
+        <input type="radio" id="cross" name="Draw" value="croix">
+        <button type="submit">envoyer</button>
+    </form>
+
+
+</body>
+
+</html>
